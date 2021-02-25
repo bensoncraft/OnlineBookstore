@@ -16,6 +16,7 @@ namespace OnlineBookstore.Models
         public string ISBN { get; set; }
         public string ClassificationCategory { get; set; }
         public float Price { get; set; }
+        public int Pages { get; set; }
 
     }
 }

@@ -28,9 +28,7 @@ namespace OnlineBookstore
             services.AddControllersWithViews();
 
             services.AddDbContext<BooksDbContext>(options =>
-           {
-               options.UseSqlServer(Configuration["ConnectionStrings:OnlineBookstoreConnection"]);
-           });
+               options.UseSqlite(Configuration["ConnectionStrings:OnlineBookstoreConnection"]));
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
         }
@@ -58,8 +56,11 @@ namespace OnlineBookstore
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "pagination",
+                    "Books/{page}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
             });
 
             SeedData.EnsurePopulated(app);

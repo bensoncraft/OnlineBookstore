@@ -11,13 +11,14 @@ namespace OnlineBookstore.Migrations
                 columns: table => new
                 {
                     BookId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("Sqlite:Autoincrement", true),
                     Title = table.Column<string>(nullable: true),
                     Author = table.Column<string>(nullable: true),
                     Publisher = table.Column<string>(nullable: true),
                     ISBN = table.Column<string>(nullable: true),
                     ClassificationCategory = table.Column<string>(nullable: true),
-                    Price = table.Column<float>(nullable: false)
+                    Price = table.Column<float>(nullable: false),
+                    Pages = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
