@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using OnlineBookstore.Models.ViewModels
+using OnlineBookstore.Models.ViewModels;
 
 namespace OnlineBookstore.Controllers
 {
@@ -55,4 +55,4 @@ namespace OnlineBookstore.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
-}
+};
