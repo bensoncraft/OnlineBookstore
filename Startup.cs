@@ -31,6 +31,11 @@ namespace OnlineBookstore
                options.UseSqlite(Configuration["ConnectionStrings:OnlineBookstoreConnection"]));
 
             services.AddScoped<IBooksRepository, EFBooksRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +53,8 @@ namespace OnlineBookstore
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseRouting();
 
@@ -73,6 +80,8 @@ namespace OnlineBookstore
                     new { Controller = "Home", action = "Index" });
 
                 endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);
